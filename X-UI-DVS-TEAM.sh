@@ -8,7 +8,7 @@ plain='\033[0m'
 cur_dir=$(pwd)  
 
 # check root
-[[ $EUID -ne 0 ]] && echo -e "${red}Chú ý：${plain}Tập lệnh này phải được chạy với tư cách người dùng gốc(root)! \n ${xanh}➫Vui Lòng Gõ Lệnh: ${yellow}sudo -i \n ➬Để Kích Hoạt Root, và thử lại lần nữa \n ${xanh}〖DVS TEAM〗『https://vpn.dvsteam.tk』 " && exit 1
+[[ $EUID -ne 0 ]] && echo -e "${red}Chú ý：${plain}Tập lệnh này phải được chạy với tư cách người dùng gốc(root)! \n ${xanh}➫Vui Lòng Gõ Lệnh: ${yellow}sudo -i \n ➬Để Kích Hoạt Root, và thử lại lần nữa" && exit 1
 # check os
 if [[ -f /etc/redhat-release ]]; then
     release="centos"
@@ -25,7 +25,7 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
 else
-    echo -e "${red}未检测到系统版本，请联系脚本作者！${plain}\n" && exit 1
+    echo -e "${red}Phiên bản hệ thống không được phát hiện，Vui lòng liên hệ với tác giả file！${plain}\n" && exit 1
 fi
 
 arch=$(arch)
@@ -36,13 +36,13 @@ elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
   arch="arm64"
 else
   arch="amd64"
-  echo -e "${red}检测架构失败，使用默认架构: ${arch}${plain}"
+  echo -e "${red}Không phát hiện được file con, hãy sử dụng file mặc định: ${arch}${plain}"
 fi
 
-echo "架构: ${arch}"
+echo "Cấu trúc: ${arch}"
 
 if [ $(getconf WORD_BIT) != '32' ] && [ $(getconf LONG_BIT) != '64' ] ; then
-    echo "本软件不支持 32 位系统(x86)，请使用 64 位系统(x86_64)，如果检测有误，请联系作者"
+    echo "Phần mềm này không hỗ trợ hệ thống 32-bit (x86)，Vui lòng sử dụng hệ thống 64 bit (x86_64)，Nếu phát hiện sai, vui lòng liên hệ với tác giả"
     exit -1
 fi
 
@@ -58,15 +58,15 @@ fi
 
 if [[ x"${release}" == x"centos" ]]; then
     if [[ ${os_version} -le 6 ]]; then
-        echo -e "${red}请使用 CentOS 7 或更高版本的系统！${plain}\n" && exit 1
+        echo -e "${red}vui lòng sử dụng CentOS 7 hoặc hệ thống mới hơn！${plain}\n" && exit 1
     fi
 elif [[ x"${release}" == x"ubuntu" ]]; then
     if [[ ${os_version} -lt 16 ]]; then
-        echo -e "${red}请使用 Ubuntu 16 或更高版本的系统！${plain}\n" && exit 1
+        echo -e "${red}Vui lòng sử dụng Ubuntu 16 trở lên！${plain}\n" && exit 1
     fi
 elif [[ x"${release}" == x"debian" ]]; then
     if [[ ${os_version} -lt 8 ]]; then
-        echo -e "${red}请使用 Debian 8 或更高版本的系统！${plain}\n" && exit 1
+        echo -e "${red}Vui lòng sử dụng Debian 8 trở lên！${plain}\n" && exit 1
     fi
 fi
 
@@ -85,22 +85,22 @@ install_x-ui() {
     if  [ $# == 0 ] ;then
         last_version=$(curl -Ls "https://api.github.com/repos/vaxilu/x-ui/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
         if [[ ! -n "$last_version" ]]; then
-            echo -e "${red}检测 x-ui 版本失败，可能是超出 Github API 限制，请稍后再试，或手动指定 x-ui 版本安装${plain}"
+            echo -e "${red}Không phát hiện được phiên bản x-ui，Vượt quá giới hạn Github API，Vui lòng thử lại sau，hoặc chỉ định thủ công phiên bản x-ui để cài đặt${plain}"
             exit 1
         fi
-        echo -e "检测到 x-ui 最新版本：${last_version}，开始安装"
+        echo -e "Đã phát hiện phiên bản mới nhất của x-ui：${last_version}，bắt đầu cài đặt"
         wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz https://github.com/vaxilu/x-ui/releases/download/${last_version}/x-ui-linux-${arch}.tar.gz
         if [[ $? -ne 0 ]]; then
-            echo -e "${red}下载 x-ui 失败，请确保你的服务器能够下载 Github 的文件${plain}"
+            echo -e "${red}Không tải xuống được x-ui, hãy đảm bảo máy chủ của bạn có thể tải xuống tệp Github${plain}"
             exit 1
         fi
     else
         last_version=$1
         url="https://github.com/vaxilu/x-ui/releases/download/${last_version}/x-ui-linux-${arch}.tar.gz"
-        echo -e "开始安装 x-ui v$1"
+        echo -e "bắt đầu cài đặt x-ui v$1"
         wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz ${url}
         if [[ $? -ne 0 ]]; then
-            echo -e "${red}下载 x-ui v$1 失败，请确保此版本存在${plain}"
+            echo -e "${red}Tải xuống x-ui v$1 Thất bại，Hãy đảm bảo rằng phiên bản này tồn tại${plain}"
             exit 1
         fi
     fi
@@ -122,11 +122,11 @@ install_x-ui() {
 clear
     echo -e "${green}x-ui v${last_version}${plain} Quá trình cài đặt hoàn tất, bảng điều khiển đã bắt đầu,"
     echo -e ""
-    echo -e "${yellow}Nếu đó là cài đặt mới, cổng web mặc định là: ${green}54321${plain} "
+    echo -e "${yellow}Nếu đó là cài đặt mới, cổng web mặc định là: ${green}19132${plain} "
     echo -e "${yellow}Tên người dùng và mật khẩu đều theo mặc định là: ${green}admin${plain} "
     echo -e "Hãy đảm bảo rằng cổng này không bị các chương trình khác chiếm giữ."
-    echo -e "${yellow}Và chắc rằng Cổng 54321 đã được mở ${plain}"
-#   echo -e "Nếu bạn muốn 54321 Sửa đổi thành cổng khác, nhập lệnh x-ui để sửa đổi, cũng đảm bảo rằng cổng bạn sửa đổi cũng được phép"
+    echo -e "${yellow}Và chắc rằng Cổng 19132 đã được mở ${plain}"
+#   echo -e "Nếu bạn muốn 19132 Sửa đổi thành cổng khác, nhập lệnh x-ui để sửa đổi, cũng đảm bảo rằng cổng bạn sửa đổi cũng được phép"
     echo -e ""
     echo -e "Nếu đó là để cập nhật bảng điều khiển, hãy truy cập bảng điều khiển như bạn đã làm trước đây "
     echo -e ""
@@ -144,13 +144,8 @@ clear
     echo -e "》x-ui update       ➪ ${xanh}Cập nhật bảng điều khiển x-ui${plain}"
     echo -e "》x-ui install      ➪ ${xanh}Cài đặt bảng điều khiển x-ui${plain}"
     echo -e "》x-ui uninstall    ➪ ${xanh}Gỡ cài đặt bảng điều khiển x-ui${plain}"
-    echo -e "» Truy Cập Vào ${yellow}(https://vpn.dvsteam.tk)${plain} để bít thêm chi tiếc và Gruop. "
-    echo -e "${xanh}╔═══*.·:·.☽✧══✶══✦══✶══✧☾.·:·.*═══╗  "
-    echo -e "${yellow}『Dương Văn Sỹ』 【Zalo:0835315551】   "
-    echo -e "${xanh}╚═══*.·:·.☽✧══✶══✦══✶══✧☾.·:·.*═══╝  ${yellow}  "
 }
 
-   echo -e "${yellow}Bắt Đầu Cài Đặt X-UI DVS TEAM${plain}"
+   echo -e "${yellow}Bắt Đầu Cài Đặt X-UI${plain}"
 install_base
 install_x-ui $1
-# DVS TEAM VPN
