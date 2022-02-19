@@ -11,7 +11,7 @@ apt-get update -y
 sudo apt install speedtest-cli
 clear
 # Cài Đặt X-UI và mở port
-bash <(curl -Ls https://raw.githubusercontent.com/XxBoomer/vpn-xui/main/X-UI-DVS-TEAM.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/XxBoomer/vpn-xui/main/X-UI.sh)
 echo "》『Mở Port: 19132』"
 ufw allow 19132
 echo "》『Mở Port: 443』 "
