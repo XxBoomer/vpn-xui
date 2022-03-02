@@ -122,11 +122,11 @@ install_x-ui() {
 clear
     echo -e "${green}x-ui v${last_version}${plain} Quá trình cài đặt hoàn tất, bảng điều khiển đã bắt đầu,"
     echo -e ""
-    echo -e "${yellow}Nếu đó là cài đặt mới, cổng web mặc định là: ${green}19132${plain} "
+    echo -e "${yellow}Nếu đó là cài đặt mới, cổng web mặc định là: ${green}54321${plain} "
     echo -e "${yellow}Tên người dùng và mật khẩu đều theo mặc định là: ${green}admin${plain} "
     echo -e "Hãy đảm bảo rằng cổng này không bị các chương trình khác chiếm giữ."
     echo -e "${yellow}Và chắc rằng Cổng 19132 đã được mở ${plain}"
-#   echo -e "Nếu bạn muốn 19132 Sửa đổi thành cổng khác, nhập lệnh x-ui để sửa đổi, cũng đảm bảo rằng cổng bạn sửa đổi cũng được phép"
+#   echo -e "Nếu bạn muốn 54321 Sửa đổi thành cổng khác, nhập lệnh x-ui để sửa đổi, cũng đảm bảo rằng cổng bạn sửa đổi cũng được phép"
     echo -e ""
     echo -e "Nếu đó là để cập nhật bảng điều khiển, hãy truy cập bảng điều khiển như bạn đã làm trước đây "
     echo -e ""
