@@ -24,7 +24,7 @@ echo -e "${tim}═════════════════════�
 echo -e "${vang}✔•Đã Hoàn Tất Cài Đặt X-UI•✔ ${plain}" 
 echo -e "${tim}════════════════════════════════════════════════════    ${plain}"
 echo -e "${xanhluc}1.Truy Cập Vào Trình duyệt ${tim}(Chrome)${plain} hoặc ${tim}(Cốc Cốc) ${plain}"
-echo -e "2.Nhập『Địa Chỉ IPv4』của VPS hoặc『Tên Miền』Thêm Đuôi "${tim}:19132${plain}"  "
+echo -e "2.Nhập『Địa Chỉ IPv4』của VPS hoặc『Tên Miền』Thêm Đuôi "${tim}:54321${plain}"  "
 echo -e "➩Tài Khoảng(Username) » ${tim}admin ${plain}  "
 echo -e "➩Mật Khẩu(Password)   » ${tim}admin ${plain}  "
 echo -e "${tim}════════════════════════════════════════════════════    ${plain}"
