@@ -14,6 +14,8 @@ clear
 bash <(curl -Ls https://raw.githubusercontent.com/XxBoomer/vpn-xui/main/X-UI.sh)
 echo "》『Mở Port: 19132』"
 ufw allow 19132
+echo "》『Mở Port: 54321』"
+ufw allow 54321
 echo "》『Mở Port: 443』 "
 ufw allow 443
 echo "》『Mở Port: 80』 "
